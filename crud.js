@@ -51,6 +51,39 @@ function leer(){
     }
 }
 
+//funcion editar
+function editar(titulo){
+    let libros =JSON.parse(localStorage.getItem("libros"));
+    for(let i=0; i < libros.length; i++){
+        if (libros[i].titulo === titulo){
+            document.getElementById("body").innerHTML =`
+            <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Editar libro</h2>
+                    </div>
+                    <div class="card-body">
+                        <form >
+                            <div class="form-group">
+                                <input type="text" id="newtitulo" class="form-control my-3" placeholder="${libros[i].titulo}">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="newdescripcion" class="form-control my-3" placeholder="${libros[i].descripcion}"></textarea>
+                            </div>
+                            
+                        </form>
+                        <button class="btn btn-success" onclick="actualizar('${i}')">Actualizar</button>
+                        <button class="btn btn-primary" onclick="vistaPrincipal()">Cancelar</button>
+                    </div>
+                </div>
+            
+            `
+        }
+
+    }
+}
+
 
 
 leer();
